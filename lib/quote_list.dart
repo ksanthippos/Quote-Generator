@@ -33,39 +33,69 @@ class _QuoteListState extends State<QuoteList> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey[300],
+      backgroundColor: Colors.blueAccent[100],
       appBar: AppBar(
-        title: Text('Awesome Quotes'),
-        centerTitle: true,
-        backgroundColor: Colors.redAccent[100],
+          title:Text("Awesome quotes!"),
+          backgroundColor: Colors.blueAccent,
       ),
-      body: ListView(
-        children: quotes.map((quote) => QuoteCard(
-            quote: quote,
-            delete: () {
-              setState(() {
-                quotes.remove(quote);
-              });
-            },
-            addFavourite: () {
-              setState(() {
-                if (!favourites.contains(quote)) {
-                  favourites.add(quote);
-                }
-              });
-            },
-        )).toList(),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          setState(() {
-            quotes = [];
-            getQuotes();
-            print(favourites.toList());
-          });
-        },
-        child: Icon(Icons.refresh,),
-        backgroundColor: Colors.redAccent[100],
+      body: Container(
+          height: MediaQuery.of(context).size.height,
+          width: MediaQuery.of(context).size.width,
+          child:Stack(
+            children: <Widget>[
+            ListView(
+                children: quotes.map((quote) => QuoteCard(
+                    quote: quote,
+                    delete: () {
+                      setState(() {
+                        quotes.remove(quote);
+                      });
+                    },
+                    addFavourite: () {
+                      setState(() {
+                        if (!favourites.contains(quote)) {
+                          favourites.add(quote);
+                        }
+                      });
+                    },
+                )).toList(),
+              ),
+              Positioned(
+                  left:20, right:20, bottom:20,
+                  child:Container(
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: <Widget>[
+                        Container(
+                            margin:EdgeInsets.only(right:20),
+                            child: FloatingActionButton(
+                              onPressed: (){
+                                setState(() {
+                                  quotes = [];
+                                  getQuotes();
+                                  print(favourites.toList());
+                                });
+                              },
+                              child: Icon(Icons.refresh),
+                            )
+                        ),
+                        Container(
+                            margin:EdgeInsets.only(right:10),
+                            child: FloatingActionButton(
+                              onPressed: (){
+                                //action code for button 2
+                                Navigator.pushNamed(context, '/favourites');
+                                print('Go to fav page');
+                              },
+                              backgroundColor: Colors.deepPurpleAccent,
+                              child: Icon(Icons.star),
+                            )
+                        ),
+                      ],),
+                  )
+              ), // our floating action button wrapper
+            ],
+          )
       ),
     );
   }

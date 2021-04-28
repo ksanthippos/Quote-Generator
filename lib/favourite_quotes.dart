@@ -17,11 +17,11 @@ class _FavouriteQuotesState extends State<FavouriteQuotes> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey[300],
+      backgroundColor: Colors.greenAccent[100],
       appBar: AppBar(
-        title: Text('Awesome Quotes'),
+        title: Text('My favourite quotes'),
         centerTitle: true,
-        backgroundColor: Colors.redAccent[100],
+        backgroundColor: Colors.greenAccent[400],
       ),
       body: ListView(
         children: favourites.map((quote) => QuoteCard(
@@ -34,7 +34,7 @@ class _FavouriteQuotesState extends State<FavouriteQuotes> {
         addFavourite: () {
           setState(() {
             if (!favourites.contains(quote)) {
-            favourites.add(quote);
+              favourites.add(quote);
             }
           });
         },
