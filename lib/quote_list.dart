@@ -16,7 +16,7 @@ class _QuoteListState extends State<QuoteList> {
   List<Quote> quotes = [];
 
   void getQuotes() {
-    for (int i = 0; i < 20; i++) {
+    for (int i = 0; i < 5; i++) {
       quotes.add(Quote(
         author: Quotes.getRandom().getAuthor(),
         text: Quotes.getRandom().getContent()
@@ -37,7 +37,7 @@ class _QuoteListState extends State<QuoteList> {
       appBar: AppBar(
         title: Text('Awesome Quotes'),
         centerTitle: true,
-        backgroundColor: Colors.redAccent,
+        backgroundColor: Colors.redAccent[100],
       ),
       body: ListView(
         children: quotes.map((quote) => QuoteCard(
@@ -48,6 +48,16 @@ class _QuoteListState extends State<QuoteList> {
               });
             }
         )).toList(),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          setState(() {
+            quotes = [];
+            getQuotes();
+          });
+        },
+        child: Icon(Icons.refresh,),
+        backgroundColor: Colors.redAccent[100],
       ),
     );
   }
