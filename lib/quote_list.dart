@@ -5,7 +5,6 @@ import 'quote.dart';
 import 'quote_card.dart';
 
 
-
 class QuoteList extends StatefulWidget {
   @override
   _QuoteListState createState() => _QuoteListState();
@@ -14,6 +13,7 @@ class QuoteList extends StatefulWidget {
 class _QuoteListState extends State<QuoteList> {
 
   List<Quote> quotes = [];
+  List<Quote> favourites = [];
 
   void getQuotes() {
     for (int i = 0; i < 5; i++) {
@@ -46,7 +46,14 @@ class _QuoteListState extends State<QuoteList> {
               setState(() {
                 quotes.remove(quote);
               });
-            }
+            },
+            addFavourite: () {
+              setState(() {
+                if (!favourites.contains(quote)) {
+                  favourites.add(quote);
+                }
+              });
+            },
         )).toList(),
       ),
       floatingActionButton: FloatingActionButton(
@@ -54,6 +61,7 @@ class _QuoteListState extends State<QuoteList> {
           setState(() {
             quotes = [];
             getQuotes();
+            print(favourites.toList());
           });
         },
         child: Icon(Icons.refresh,),

@@ -6,7 +6,8 @@ class QuoteCard extends StatelessWidget {
 
   final Quote quote;
   final Function delete;
-  QuoteCard({ this.quote, this.delete });
+  final Function addFavourite;
+  QuoteCard({ this.quote, this.delete, this.addFavourite });
 
   @override
   Widget build(BuildContext context) {
@@ -47,13 +48,11 @@ class QuoteCard extends StatelessWidget {
                 SizedBox(width: 10),
                 TextButton.icon(
                     icon: Icon(Icons.star),
-                    label: Text('add to favourites'),
+                    label: Text('favourite'),
                   style: TextButton.styleFrom(
                     primary: Colors.grey[600],
                   ),
-                    onPressed: () {
-
-                    },
+                    onPressed: addFavourite,
                 ),
               ],
             )
