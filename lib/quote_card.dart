@@ -1,13 +1,11 @@
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'quote.dart';
 
 class QuoteCard extends StatelessWidget {
-
   final Quote quote;
   final Function delete;
   final Function addFavourite;
-  QuoteCard({ this.quote, this.delete, this.addFavourite });
+  QuoteCard({this.quote, this.delete, this.addFavourite});
 
   @override
   Widget build(BuildContext context) {
@@ -47,12 +45,12 @@ class QuoteCard extends StatelessWidget {
                 ),
                 SizedBox(width: 10),
                 TextButton.icon(
-                    icon: Icon(Icons.star),
-                    label: Text('favourite'),
+                  icon: Icon(Icons.star),
+                  label: Text('favourite'),
                   style: TextButton.styleFrom(
                     primary: Colors.grey[600],
                   ),
-                    onPressed: addFavourite,
+                  onPressed: addFavourite,
                 ),
               ],
             )

@@ -1,8 +1,6 @@
 import 'package:flutter/cupertino.dart';
-import 'package:quotes/quotes.dart';
 import 'package:flutter/material.dart';
 import 'quote.dart';
-import 'quote_card.dart';
 import 'quote_card.dart';
 
 class FavouriteQuotes extends StatefulWidget {
@@ -11,11 +9,14 @@ class FavouriteQuotes extends StatefulWidget {
 }
 
 class _FavouriteQuotesState extends State<FavouriteQuotes> {
-
   List<Quote> favourites = [];
+  Map data = {};
 
   @override
   Widget build(BuildContext context) {
+    data = ModalRoute.of(context).settings.arguments;
+    favourites.add(data['quote']);
+
     return Scaffold(
       backgroundColor: Colors.greenAccent[100],
       appBar: AppBar(
@@ -24,21 +25,16 @@ class _FavouriteQuotesState extends State<FavouriteQuotes> {
         backgroundColor: Colors.greenAccent[400],
       ),
       body: ListView(
-        children: favourites.map((quote) => QuoteCard(
-        quote: quote,
-        delete: () {
-          setState(() {
-          favourites.remove(quote);
-        });
-        },
-        addFavourite: () {
-          setState(() {
-            if (!favourites.contains(quote)) {
-              favourites.add(quote);
-            }
-          });
-        },
-        )).toList(),
+        children: favourites
+            .map((quote) => QuoteCard(
+                  quote: quote,
+                  delete: () {
+                    setState(() {
+                      favourites.remove(quote);
+                    });
+                  },
+                ))
+            .toList(),
       ),
     );
   }
