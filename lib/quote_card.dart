@@ -38,13 +38,22 @@ class QuoteCard extends StatelessWidget {
               children: [
                 TextButton.icon(
                   icon: Icon(Icons.delete),
-                  label: Text(
-                    'delete',
-                  ),
+                  label: Text('delete'),
                   style: TextButton.styleFrom(
                     primary: Colors.grey[600],
                   ),
                   onPressed: delete,
+                ),
+                SizedBox(width: 10),
+                TextButton.icon(
+                    icon: Icon(Icons.star),
+                    label: Text('add to favourites'),
+                  style: TextButton.styleFrom(
+                    primary: Colors.grey[600],
+                  ),
+                    onPressed: () {
+
+                    },
                 ),
               ],
             )
