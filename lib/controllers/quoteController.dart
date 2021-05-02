@@ -30,7 +30,9 @@ class QuoteController extends GetxController {
   }
 
   addFavourite(Quote quote) {
-    favouriteQuotes.contains(quote) ? null : favouriteQuotes.add(quote);
+    if (!favouriteQuotes.contains(quote)) {
+      favouriteQuotes.add(quote);
+    }
   }
 
   removeFavourite(Quote quote) {
