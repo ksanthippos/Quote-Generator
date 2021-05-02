@@ -19,18 +19,24 @@ class FavouriteQuotes extends StatelessWidget {
         centerTitle: true,
         backgroundColor: appBarColor,
       ),
-      body: Obx(
-        () => ListView.builder(
-          physics: const NeverScrollableScrollPhysics(),
-          shrinkWrap: true,
-          itemCount: quoteController.favouriteQuotes.length,
-          itemBuilder: (context, index) {
-            Quote quote = quoteController.favouriteQuotes[index];
-            return QuoteCard(
-              quote: quote,
-              delete: () => quoteController.removeFavourite(quote),
-            );
-          },
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            Obx(
+              () => ListView.builder(
+                shrinkWrap: true,
+                physics: ScrollPhysics(),
+                itemCount: quoteController.favouriteQuotes.length,
+                itemBuilder: (context, index) {
+                  Quote quote = quoteController.favouriteQuotes[index];
+                  return QuoteCard(
+                    quote: quote,
+                    delete: () => quoteController.removeFavourite(quote),
+                  );
+                },
+              ),
+            ),
+          ],
         ),
       ),
     );

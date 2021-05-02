@@ -21,24 +21,26 @@ class QuoteList extends StatelessWidget {
         centerTitle: true,
         backgroundColor: appBarColor,
       ),
-      body: Column(
-        children: [
-          Obx(
-            () => ListView.builder(
-              physics: const NeverScrollableScrollPhysics(),
-              shrinkWrap: true,
-              itemCount: quoteController.quotes.length,
-              itemBuilder: (context, index) {
-                Quote quote = quoteController.quotes[index];
-                return QuoteCard(
-                  quote: quote,
-                  delete: () => quoteController.removeQuote(quote),
-                  addFavourite: () => quoteController.addFavourite(quote),
-                );
-              },
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            Obx(
+              () => ListView.builder(
+                shrinkWrap: true,
+                physics: ScrollPhysics(),
+                itemCount: quoteController.quotes.length,
+                itemBuilder: (context, index) {
+                  Quote quote = quoteController.quotes[index];
+                  return QuoteCard(
+                    quote: quote,
+                    delete: () => quoteController.removeQuote(quote),
+                    addFavourite: () => quoteController.addFavourite(quote),
+                  );
+                },
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
