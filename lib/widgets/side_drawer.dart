@@ -15,7 +15,7 @@ class SideDrawer extends StatelessWidget {
                 color: Colors.blueAccent,
               ),
               child: Text(
-                'Awesome quotes!',
+                'Menu',
                 style: TextStyle(
                   color: Colors.white,
                   fontSize: 24,
@@ -29,6 +29,13 @@ class SideDrawer extends StatelessWidget {
             ListTile(
               title: Text("Favourites"),
               onTap: () => Get.to(FavouriteQuotes()),
+            ),
+            ListTile(
+              title: Text("About"),
+              onTap: () => Get.defaultDialog(
+                title: 'Quote Generator v.1.0',
+                middleText: '@ksanthippos 2021',
+              ),
             ),
           ],
         ),

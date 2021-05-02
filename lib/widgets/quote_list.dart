@@ -17,7 +17,7 @@ class QuoteList extends StatelessWidget {
       backgroundColor: bgColor,
       drawer: SideDrawer(),
       appBar: AppBar(
-        title: Text("Awesome quotes!"),
+        title: Text("Quote Generator"),
         centerTitle: true,
         backgroundColor: appBarColor,
       ),

@@ -15,7 +15,7 @@ class FavouriteQuotes extends StatelessWidget {
     return Scaffold(
       backgroundColor: bgColor,
       appBar: AppBar(
-        title: Text('My favourite quotes'),
+        title: Text('My Favourite Quotes'),
         centerTitle: true,
         backgroundColor: appBarColor,
       ),
