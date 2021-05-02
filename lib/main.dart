@@ -1,14 +1,12 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'quote_list.dart';
-import 'favourite_quotes.dart';
+import 'package:get/get.dart';
+import 'package:quotes_list/controllers/quoteController.dart';
+import 'widgets/quote_list.dart';
 
-void main() => runApp(MaterialApp(
-  initialRoute: '/',
-  routes: {
-    '/': (context) => QuoteList(),
-    '/favourites': (context) => FavouriteQuotes(),
-  }
-));
-
-
+void main() {
+  Get.put(QuoteController());
+  runApp(GetMaterialApp(
+    home: QuoteList(),
+  ));
+}
