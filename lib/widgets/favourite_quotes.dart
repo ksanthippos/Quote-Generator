@@ -30,6 +30,7 @@ class FavouriteQuotes extends StatelessWidget {
                 itemBuilder: (context, index) {
                   Quote quote = quoteController.favouriteQuotes[index];
                   return QuoteCard(
+                    favPageActive: true,
                     quote: quote,
                     delete: () => quoteController.removeFavourite(quote),
                   );

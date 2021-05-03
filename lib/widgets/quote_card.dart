@@ -5,7 +5,9 @@ class QuoteCard extends StatelessWidget {
   final Quote quote;
   final Function delete;
   final Function addFavourite;
-  QuoteCard({this.quote, this.delete, this.addFavourite});
+  final bool favPageActive;
+  QuoteCard(
+      {this.quote, this.delete, this.addFavourite, this.favPageActive = false});
 
   @override
   Widget build(BuildContext context) {
@@ -35,23 +37,23 @@ class QuoteCard extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                TextButton.icon(
-                  icon: Icon(Icons.delete),
-                  label: Text('delete'),
-                  style: TextButton.styleFrom(
-                    primary: Colors.grey[600],
-                  ),
-                  onPressed: delete,
-                ),
-                SizedBox(width: 10),
-                TextButton.icon(
-                  icon: Icon(Icons.star),
-                  label: Text('favourite'),
-                  style: TextButton.styleFrom(
-                    primary: Colors.grey[600],
-                  ),
-                  onPressed: addFavourite,
-                ),
+                !favPageActive // card on home page --> show favourite button / card on fav page --> show delete
+                    ? TextButton.icon(
+                        icon: Icon(Icons.star),
+                        label: Text('favourite'),
+                        style: TextButton.styleFrom(
+                          primary: Colors.grey[600],
+                        ),
+                        onPressed: addFavourite,
+                      )
+                    : TextButton.icon(
+                        icon: Icon(Icons.delete),
+                        label: Text('delete'),
+                        style: TextButton.styleFrom(
+                          primary: Colors.grey[600],
+                        ),
+                        onPressed: delete,
+                      )
               ],
             )
           ],

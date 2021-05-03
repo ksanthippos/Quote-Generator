@@ -33,7 +33,6 @@ class QuoteList extends StatelessWidget {
                   Quote quote = quoteController.quotes[index];
                   return QuoteCard(
                     quote: quote,
-                    delete: () => quoteController.removeQuote(quote),
                     addFavourite: () => quoteController.addFavourite(quote),
                   );
                 },
